@@ -33,9 +33,9 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/loaderio-4dd53eb5634fc0f6eebad89a8ca46c76/")
+@app.get("/loaderio-a059a2b166f59859ceaad4f9e1a017e6/")
 async def verify():
-    token = "loaderio-4dd53eb5634fc0f6eebad89a8ca46c76"
+    token = "loaderio-a059a2b166f59859ceaad4f9e1a017e6"
     return Response(content=token, media_type="text/plain")
 
 @app.get("/", response_class=HTMLResponse)
