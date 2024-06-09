@@ -1,7 +1,7 @@
 FROM python:3.9-slim
 
 RUN apt-get update && \
-    apt-get install -y redis-server nginx && \
+    apt-get install -y redis-server nginx pkg-config libmysqlclient-dev && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -18,4 +18,4 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 EXPOSE 80
 
-CMD ["sh", "-c", "redis-server /usr/local/etc/redis/redis.conf & uvicorn app:app --host 0.0.0.0 --port 8000 & celery -A celery_config.celery worker --loglevel=info & nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "redis-server /usr/local/etc/redis/redis.conf & uvicorn app:app --host 0.0.0.0 --port 8000 & celery -A app.celery worker --loglevel=info & nginx -g 'daemon off;'"]
