@@ -1,9 +1,9 @@
 from celery import Celery
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from models import Message, Base
 import os
 import logging
+from .models import Message
 
 logger = logging.getLogger(__name__)
 

@@ -6,8 +6,7 @@ def make_celery():
     celery = Celery(
         __name__,
         broker=os.getenv("CELERY_BROKER_URL"),
-        backend=os.getenv("CELERY_RESULT_BACKEND"),
-        include=["tasks"],
+        backend=os.getenv("CELERY_RESULT_BACKEND"),   
     )
 
     celery.conf.update(
@@ -20,3 +19,6 @@ def make_celery():
     )
 
     return celery
+
+celery = make_celery()
+import app.tasks
