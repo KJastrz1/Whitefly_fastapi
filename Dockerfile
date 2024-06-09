@@ -20,9 +20,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
 
-EXPOSE 80
-EXPOSE 8000
-
 CMD redis-server & \
     uvicorn app.app:app --host 0.0.0.0 --port 8000 & \
     celery -A app.celery_config.celery worker --loglevel=info & \
