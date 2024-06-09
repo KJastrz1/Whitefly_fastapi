@@ -39,7 +39,7 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: <your_azure_web_app_name>
+        app-name: whitefly-fastapi
         images: ghcr.io/${{ secrets.GHCR_USERNAME }}/whitefly-fastapi:latest
         publish-profile: ${{ secrets.AZURE_WEBAPPS_PUBLISH_PROFILE }}
 
