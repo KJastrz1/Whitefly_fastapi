@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, Depends
-from fastapi.responses import HTMLResponse
+from fastapi.responses import Response, HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from sqlalchemy import create_engine
@@ -33,6 +33,10 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/loaderio-4dd53eb5634fc0f6eebad89a8ca46c76/")
+async def verify():
+    token = "loaderio-4dd53eb5634fc0f6eebad89a8ca46c76"
+    return Response(content=token, media_type="text/plain")
 
 @app.get("/", response_class=HTMLResponse)
 async def get_index(request: Request, db: Session = Depends(get_db)):
