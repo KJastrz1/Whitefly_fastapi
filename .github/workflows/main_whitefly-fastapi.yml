@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_2490154c4c0a415da96b80b879edf378 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_102a455af4404bb6a9058b0f656661ef }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_efacdf42013848839450bb6acd3e40fd }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_fab0ee8c44b2476798cabedb8c453a12 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_2490154c4c0a415da96b80b879edf378 }}/whitefly_fastapi:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_efacdf42013848839450bb6acd3e40fd }}/whitefly_fastapi:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'whitefly-fastapi'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4086cd391bd4452fa5f82867f4de55d7 }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_2490154c4c0a415da96b80b879edf378 }}/whitefly_fastapi:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b4fb147674b0430e85782858ac13564a }}
+        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_efacdf42013848839450bb6acd3e40fd }}/whitefly_fastapi:${{ github.sha }}'
